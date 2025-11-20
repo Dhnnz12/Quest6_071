@@ -52,15 +52,9 @@ fun DataApp(
             }
             composable(route = Navigasi.Detail.name) {
                 TampilData(
-                    // Untuk tombol "Back"
-                    onBackBtnClick = {
-                        navController.popBackStack()
-                    },
-                    // --- TAMBAHKAN INI UNTUK TOMBOL BARU ---
-                    // Untuk tombol "Ke Formulir Pendaftaran"
-                    onToFormulirClick = {
-                        navController.navigate(Navigasi.Formulirku.name)
-                    }
+                    statusUISiswa = uiState.value,
+                    onBackBtnClick = {cancelAndBackToFormulirku(navController)}
+
                 )
             }
         }
