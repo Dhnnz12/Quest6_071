@@ -77,13 +77,15 @@ fun FormIsian(
         )
         {
             OutlinedTextField(
-                value = "",
+                value = txtNama,
                 singleLine = true,
                 modifier = Modifier
                     .padding(top = 25.dp)
                     .width(250.dp),
                 label = { Text(text = "Nama Lengkap") },
-                onValueChange = {},
+                onValueChange = {
+                    txtNama = it
+                },
             )
             HorizontalDivider(
                 modifier = Modifier
@@ -91,7 +93,7 @@ fun FormIsian(
                     .width(250.dp), thickness = Thickness, color = Color.Red
             )
             Row {
-                jenisK.forEach { item ->
+                pilihanJK.forEach { item ->
                     Row(verticalAlignment = Alignment.CenterVertically) {
                         RadioButton(
                             selected = false,
