@@ -64,14 +64,14 @@ fun FormIsian(
                 value = "",
                 singleLine = true,
                 modifier = Modifier
-                    .padding(top = 20.dp)
+                    .padding(top = 25.dp)
                     .width(250.dp),
                 label = { Text(text = "Nama Lengkap") },
                 onValueChange = {},
             )
             HorizontalDivider(
                 modifier = Modifier
-                    .padding(20.dp)
+                    .padding(25.dp)
                     .width(250.dp), thickness = Thickness, color = Color.Red
             )
             Row {
@@ -87,7 +87,7 @@ fun FormIsian(
             }
             HorizontalDivider(
                 modifier = Modifier
-                    .padding(20.dp)
+                    .padding(25.dp)
                     .width(250.dp),
                 thickness = 1.dp,
                 color = Color.Red
