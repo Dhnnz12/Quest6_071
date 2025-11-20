@@ -5,7 +5,7 @@
     <string name="wanita">Perempuan</string>
     <string name="back">Back</string>
     <string name="nama_lengkap">NAMA LENGKAP</string>
-    <string name="jenis_kelamin">JENIS KELAMIN</string>
+    <string name="Gender">JENIS KELAMIN</string>
     <string name="alamat">ALAMAT</string>
     <string name="tampil">Tampilan Data</string>
     <string name="home">Isian</string>

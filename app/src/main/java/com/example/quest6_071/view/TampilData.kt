@@ -33,66 +33,68 @@ import kotlin.collections.forEach
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun TampilData(
-    statusUiSiswa: Siswa,
-    onBackBtnClick:()-> Unit
-){
+    statusUISiswa: Siswa,
+    onBackBtnClick: () -> Unit
+) {
+
     val items = listOf(
-        Pair(stringResource(R.string.nama_lengkap), second = statusUiSiswa),
-        Pair(stringResource(R.string.Gender), statusUiSiswa),
-        Pair(stringResource(R.string.alamat), statusUiSiswa)
+        Pair(stringResource(R.string.nama_lengkap), statusUISiswa.nama),
+        Pair(stringResource(R.string.Gender), statusUISiswa.gender),
+        Pair(stringResource(R.string.alamat), statusUISiswa.alamat)
     )
-    Scaffold (
-        topBar = { // TopAppBar seharusnya ditempatkan di dalam parameter topBar
+
+    Scaffold(
+        modifier = Modifier,
+        topBar = {
             TopAppBar(
-                title = { Text(text = stringResource(id = R.string.tampil), color = Color.White) },
-                colors = TopAppBarDefaults.mediumTopAppBarColors(
-                    containerColor = colorResource(id = R.color.teal_700) // Menggunakan containerColor
+                title = {
+                    Text(
+
+                        text = stringResource(id = R.string.tampil),
+                        color = Color.White
+                    )
+                },
+                colors = TopAppBarDefaults.topAppBarColors(
+                    containerColor = colorResource(id = R.color.teal_700)
                 )
             )
         }
-    ) { innerPadding ->
+    ) { isiRuang ->
         Column(
-            modifier = Modifier
-                .padding(innerPadding) // Menggunakan innerPadding dari Scaffold
-                .padding(dimensionResource(id = R.dimen.padding_medium)), // Padding tambahan untuk konten
-            verticalArrangement = Arrangement.spacedBy(dimensionResource(id = R.dimen.padding_small))
+            modifier = Modifier.padding(isiRuang),
+            verticalArrangement = Arrangement.SpaceBetween
         ) {
-            // Bagian untuk menampilkan data (forEach)
-            items.forEach { item ->
-                Column {
-                    Text(
-                        text = item.first.uppercase(),
-                        fontSize = 16.sp
-                    )
-                    Text(
-                        text = item.second,
-                        fontWeight = FontWeight.Bold,
-                        fontFamily = FontFamily.Cursive,
-                        fontSize = 22.sp
+            Column(
+                modifier = Modifier.padding(dimensionResource(id = R.dimen.padding_medium)),
+                verticalArrangement = Arrangement.spacedBy(dimensionResource(id = R.dimen.padding_small))
+            ) {
+                items.forEach { item ->
+                    Column {
+                        Text(
+                            text = item.first.uppercase(),
+                            fontSize = 16.sp
+                        )
+                        Text(
+                            text = item.second,
+                            fontWeight = FontWeight.Bold,
+                            fontFamily = FontFamily.Cursive,
+                            fontSize = 22.sp
+                        )
+                    }
+                    HorizontalDivider(
+                        modifier = Modifier.padding(vertical = 8.dp),
+                        thickness = 1.dp,
+                        color = Color.Gray
                     )
                 }
-                HorizontalDivider(thickness = 1.dp, color = Color.Cyan)
-            }
 
-            Spacer(modifier = Modifier.weight(1f)) // Spacer untuk mendorong tombol ke bawah
-
-            // --- TOMBOL BARU DITAMBAHKAN DI SINI ---
-            Button(
-                modifier = Modifier.fillMaxWidth(),
-                onClick = onToFormulirClick // Menggunakan lambda baru
-            ) {
-                // Tambahkan string baru di strings.xml untuk ini jika perlu
-                Text(text = "Ke Formulir Pendaftaran")
-            }
-
-            Spacer(modifier = Modifier.height(8.dp)) // Jarak antar tombol
-
-            // Tombol "Back" yang sudah ada
-            Button(
-                modifier = Modifier.fillMaxWidth(),
-                onClick = onBackBtnClick
-            )  {
-                Text(text = stringResource(id = R.string.back))
+                Spacer(modifier = Modifier.weight(1f))
+                Button(
+                    modifier = Modifier.fillMaxWidth(),
+                    onClick = onBackBtnClick
+                ) {
+                    Text(text = stringResource(id = R.string.back))
+                }
             }
         }
     }
