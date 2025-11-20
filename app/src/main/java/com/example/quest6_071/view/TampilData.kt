@@ -26,21 +26,20 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.example.quest6_071.R
+import com.example.quest6_071.model.Siswa
 import kotlin.collections.forEach
 
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun TampilData(
-    // Parameter lama untuk tombol kembali
-    onBackBtnClick: () -> Unit,
-    // --- PARAMETER BARU UNTUK TOMBOL FORMULIR ---
-    onToFormulirClick: () -> Unit
+    statusUiSiswa: Siswa,
+    onBackBtnClick:()-> Unit
 ){
     val items = listOf(
-        Pair(stringResource(R.string.nama_lengkap), "Contoh Nama"),
-        Pair(stringResource(R.string.jenis_kelamin), "Lainnya"),
-        Pair(stringResource(R.string.alamat), "Yogyakarta")
+        Pair(stringResource(R.string.nama_lengkap), second =statusUiSiswa),
+        Pair(stringResource(R.string.Gender), statusUiSiswa),
+        Pair(stringResource(R.string.alamat), statusUiSiswa)
     )
     Scaffold (
         topBar = { // TopAppBar seharusnya ditempatkan di dalam parameter topBar
