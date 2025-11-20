@@ -97,13 +97,14 @@ fun FormIsian(
             )
             Row {
                 pilihanJK.forEach { item ->
-                    Row(modifier = Modifier.selectable(
-                        selected = txtGender == item,
-                        onClick = {
-                            txtGender = item
-                        }
+                    Row(
+                        modifier = Modifier.selectable(
+                            selected = txtGender == item,
+                            onClick = {
+                                txtGender = item
+                            }
                         ),
-                        verticalAlignment = Alignment.CenterVertically){
+                        verticalAlignment = Alignment.CenterVertically) {
                         RadioButton(
                             selected = txtGender == item,
                             onClick = {
@@ -113,32 +114,36 @@ fun FormIsian(
                         Text(item)
                     }
 
-            HorizontalDivider(
-                modifier = Modifier
-                    .padding(25.dp)
-                    .width(250.dp),
-                thickness = 1.dp,
-                color = Color.Red
-            )
-            OutlinedTextField(
-                value = "",
-                singleLine = true,
-                modifier = Modifier
-                    .width(250.dp),
-                label = { Text(text = "Alamat") },
-                onValueChange = {},
-            )
-            Spacer(modifier = Modifier.height(30.dp))
+                    HorizontalDivider(
+                        modifier = Modifier
+                            .padding(25.dp)
+                            .width(250.dp),
+                        thickness = 1.dp,
+                        color = Color.Red
+                    )
+                    OutlinedTextField(
+                        value = txtAlamat,
+                        singleLine = true,
+                        modifier = Modifier
+                            .width(250.dp),
+                        label = { Text(text = "Alamat") },
+                        onValueChange = {
+                            txtAlamat = it
+                        },
+                    )
+                    Spacer(modifier = Modifier.height(30.dp))
 
-            Button(
-                modifier = Modifier.fillMaxWidth(1f),
-                onClick = OnSubmitBtnClick
-            ) {
-                Text(stringResource(R.string.submit))
+                    Button(
+                        modifier = Modifier.fillMaxWidth(1f),
+                        enabled = txtAlamat.isNotEmpty(),
+                        onClick = { OnSubmitBtnClick(listData) }
+                    ) {
+                        Text(stringResource(R.string.submit))
+                    }
+                }
             }
         }
     }
 }
-
 
 
