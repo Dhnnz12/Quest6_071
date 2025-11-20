@@ -37,7 +37,7 @@ fun TampilData(
     onBackBtnClick:()-> Unit
 ){
     val items = listOf(
-        Pair(stringResource(R.string.nama_lengkap), second =statusUiSiswa),
+        Pair(stringResource(R.string.nama_lengkap), second = statusUiSiswa),
         Pair(stringResource(R.string.Gender), statusUiSiswa),
         Pair(stringResource(R.string.alamat), statusUiSiswa)
     )
